@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planejamento Financeiro Familiar</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #ff6f00; /* Laranja */
+      color: #ffffff;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo span {
+      color: #2e7d32; /* Verde */
+      margin-left: 0.5rem;
+    }
+
+    nav {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #ff6f00;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .menu-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #ff6f00;
+      margin-bottom: 1rem;
+    }
+
+    form label {
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #ff6f00;
+      color: #ffffff;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e65c00;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f4f4f4;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 1rem;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Meu Dinheiro <span>$</span></div>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <nav id="menu">
+      <a href="#moradia">Moradia</a>
+      <a href="#veiculo">Veículo</a>
+      <a href="#despesas-fixas">Despesas Fixas</a>
+      <a href="#despesas-anuais">Despesas Anuais</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="dados-pessoais">
+      <h2>Dados Pessoais</h2>
+      <form id="dadosForm">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" required>
+
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" required>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" required>
+
+        <label for="membros">Quantos membros familiares:</label>
+        <input type="number" id="membros" required>
+
+        <label for="renda">Renda Familiar:</label>
+        <input type="number" id="renda" step="0.01" required>
+
+        <button type="submit">Salvar Dados</button>
+      </form>
+    </section>
+
+    <section id="moradia">
+      <h2>Moradia</h2>
+      <form id="moradiaForm">
+        <label for="tipo-moradia">Tipo de Moradia:</label>
+        <select id="tipo-moradia">
+          <option value="propria">Própria</option>
+          <option value="alugada">Alugada</option>
+          <option value="outra">Outra</option>
+        </select>
+
+        <label for="valor-aluguel">Valor do Aluguel ou Prestação:</label>
+        <input type="number" id="valor-aluguel" step="0.01">
+
+        <label for="condominio">Valor do Condomínio:</label>
+        <input type="number" id="condominio" step="0.01">
+
+        <label for="iptu">Valor do IPTU:</label>
+        <input type="number" id="iptu" step="0.01">
+
+        <button type="submit">Salvar Moradia</button>
+      </form>
+    </section>
+
+    <section id="veiculo">
+      <h2>Veículo</h2>
+      <form id="veiculoForm">
+        <label for="possui-veiculo">Possui Veículo Próprio?</label>
+        <select id="possui-veiculo">
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+        </select>
+
+        <label for="modelo-ano">Modelo e Ano do Veículo:</label>
+        <input type="text" id="modelo-ano">
+
+        <label for="ipva">Valor do IPVA:</label>
+        <input type="number" id="ipva" step="0.01">
+
+        <label for="seguro">Valor do Seguro:</label>
+        <input type="number" id="seguro" step="0.01">
+
+        <button type="submit">Salvar Veículo</button>
+      </form>
+    </section>
+
+    <section id="despesas-fixas">
+      <h2>Despesas Fixas</h2>
+      <form id="despesasFixasForm">
+        <label for="agua">Água:</label>
+        <input type="number" id="agua" step="0.01">
+
+        <label for="luz">Luz:</label>
+        <input type="number" id="luz" step="0.01">
+
+        <label for="gas">Gás:</label>
+        <input type="number" id="gas" step="0.01">
+
+        <button type="submit">Salvar Despesas Fixas</button>
+      </form>
+    </section>
+
+    <section id="despesas-anuais">
+      <h2>Despesas Anuais</h2>
+      <form id="despesasAnuaisForm">
+        <label for="renovacao-seguros">Renovação de Seguros:</label>
+        <input type="number" id="renovacao-seguros" step="0.01">
+
+        <label for="anuidade-cartao">Anuidade de Cartões de Crédito:</label>
+        <input type="number" id="anuidade-cartao" step="0.01">
+
+        <button type="submit">Salvar Despesas Anuais</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2023 Planejamento Financeiro Familiar
+  </footer>
+
+  <script>
+    // Função para alternar o menu no mobile
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+
+    // Exemplo de interatividade: Salvar dados do formulário
+    document.getElementById('dadosForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Dados pessoais salvos com sucesso!');
+    });
+
+    document.getElementById('moradiaForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Dados de moradia salvos com sucesso!');
+    });
+
+    document.getElementById('veiculoForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Dados de veículo salvos com sucesso!');
+    });
+
+    document.getElementById('despesasFixasForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Despesas fixas salvas com sucesso!');
+    });
+
+    document.getElementById('despesasAnuaisForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Despesas anuais salvas com sucesso!');
+    });
+  </script>
+</body>
+</html>
